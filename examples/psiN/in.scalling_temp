@@ -1,5 +1,5 @@
 # Script for free energy simulation of liquid 
-# Run like this :./lmp_g++ -var rho_init 0.01 -var simTemp 0.13 -in in.liquid
+# Run like this :./lmp_g++ -var rho_init 0.40 -var simTemp 0.12 -var Xatoms 60 -var Yatoms 60 -in in.scalling_temp
 echo both
 
 shell		mkdir	dumps logs avgs
@@ -12,7 +12,7 @@ variable	radius_cut	equal 4.0
 variable	psi_cut 	equal 3.0
 
 variable	radius_cut_psi  equal ${psi_cut}
-variable	psifilter	equal 0.3
+variable	sigma_s	equal   1.35   #sigma_s = 1.15 1.35 1.55 1.90
 #variable	psi4filter	equal 0.6
 
 variable	rho	equal	${rho_init}
@@ -92,9 +92,9 @@ set             group solid type 2
 
 
 pair_style     lj/shift ${radius_cut}
-pair_coeff      1 1 1.0 1.0 10.0 1.15
-pair_coeff      1 2 1.0 1.0 10.0 1.15
-pair_coeff      2 2 1.0 1.0 10.0 1.15
+pair_coeff      1 1 1.0 1.0 10.0 ${sigma_s}
+pair_coeff      1 2 1.0 1.0 10.0 ${sigma_s}
+pair_coeff      2 2 1.0 1.0 10.0 ${sigma_s}
 
 #pair_style	lj/cut	${radius_cut}
 
