@@ -13,7 +13,8 @@ variable	psi_cut 	equal 3.0
 
 variable	radius_cut_psi  equal ${psi_cut}
 variable	sigma_s	equal   1.35   #sigma_s = 1.15 1.35 1.55 1.90
-#variable	psi4filter	equal 0.6
+variable        psifilter      equal 0.6
+variable	psi4filter	equal 0.6
 
 variable	rho	equal	${rho_init}
 variable	drho	equal	0.01
